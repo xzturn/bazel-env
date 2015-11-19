@@ -4,3 +4,9 @@
 [submodule "third_party/googletest/googletest"]
 	path = third_party/googletest/googletest
 	url = https://github.com/google/googletest.git
+[submodule "third_party/glog/glog"]
+	path = third_party/glog/glog
+	url = https://github.com/google/glog.git
+[submodule "third_party/libunwind/libunwind"]
+	path = third_party/libunwind/libunwind
+	url = git://git.sv.gnu.org/libunwind.git

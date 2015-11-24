@@ -1,4 +1,4 @@
 # the common directory should be private
 # all the other open source deps locate in third_party
 common/
-bazel*/*
+bazel*

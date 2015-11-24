@@ -10,3 +10,6 @@
 [submodule "third_party/libunwind/libunwind"]
 	path = third_party/libunwind/libunwind
 	url = git://git.sv.gnu.org/libunwind.git
+[submodule "third_party/gperftools/gperftools"]
+	path = third_party/gperftools/gperftools
+	url = https://github.com/gperftools/gperftools.git

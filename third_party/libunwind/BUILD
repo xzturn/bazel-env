@@ -1,0 +1,212 @@
+licenses(["notice"])
+
+#cc_library(
+#  name = "libunwind-todo",
+#  visibility = ["//visibility:public"],
+#  includes = [
+#    "build/include",
+#    "libunwind/include",
+#    "libunwind/include/tdep-x86_64",
+#    "libunwind/src/dwarf",
+#    "libunwind/src/x86_64",
+#  ],
+#  srcs = [
+#    "build/include/private/config.h",
+#    "build/include/tdep/libunwind_i.h",
+#    "libunwind/include/compiler.h",
+#    "libunwind/include/dwarf-eh.h",
+#    "libunwind/include/dwarf.h",
+#    "libunwind/include/dwarf_i.h",
+#    "libunwind/include/libunwind_i.h",
+#    "libunwind/include/mempool.h",
+#    "libunwind/include/remote.h",
+#    "libunwind/include/unwind.h",
+#    "libunwind/include/tdep-x86_64/dwarf-config.h",
+#    "libunwind/include/tdep-x86_64/libunwind_i.h",
+#    "libunwind/src/elfxx.h",
+#    "libunwind/src/os-linux.h",
+#    "libunwind/src/x86_64/offsets.h",
+#    "libunwind/src/dwarf/Gexpr.c",
+#    "libunwind/src/dwarf/Gfde.c",
+#    "libunwind/src/dwarf/Gfind_proc_info-lsb.c",
+#    "libunwind/src/dwarf/Gfind_unwind_table.c",
+#    "libunwind/src/dwarf/global.c",
+#    "libunwind/src/dwarf/Gparser.c",
+#    "libunwind/src/dwarf/Gpe.c",
+#    "libunwind/src/dwarf/Gstep.c",
+#    "libunwind/src/dwarf/Lexpr.c",
+#    "libunwind/src/dwarf/Lfde.c",
+#    "libunwind/src/dwarf/Lfind_proc_info-lsb.c",
+#    "libunwind/src/dwarf/Lfind_unwind_table.c",
+#    "libunwind/src/dwarf/Lparser.c",
+#    "libunwind/src/dwarf/Lpe.c",
+#    "libunwind/src/dwarf/Lstep.c",
+#    "libunwind/src/elf64.c",
+#    "libunwind/src/mi/backtrace.c",
+#    "libunwind/src/mi/dyn-cancel.c",
+#    "libunwind/src/mi/dyn-info-list.c",
+#    "libunwind/src/mi/dyn-register.c",
+#    "libunwind/src/mi/flush_cache.c",
+#    "libunwind/src/mi/Gdestroy_addr_space.c",
+#    "libunwind/src/mi/Gdyn-extract.c",
+#    "libunwind/src/mi/Gdyn-remote.c",
+#    "libunwind/src/mi/Gfind_dynamic_proc_info.c",
+#    "libunwind/src/mi/Gget_accessors.c",
+#    "libunwind/src/mi/Gget_fpreg.c",
+#    "libunwind/src/mi/Gget_proc_info_by_ip.c",
+#    "libunwind/src/mi/Gget_proc_name.c",
+#    "libunwind/src/mi/Gget_reg.c",
+#    "libunwind/src/mi/Gput_dynamic_unwind_info.c",
+#    "libunwind/src/mi/Gset_caching_policy.c",
+#    "libunwind/src/mi/Gset_fpreg.c",
+#    "libunwind/src/mi/Gset_reg.c",
+#    "libunwind/src/mi/init.c",
+#    "libunwind/src/mi/Ldestroy_addr_space.c",
+#    "libunwind/src/mi/Ldyn-extract.c",
+#    "libunwind/src/mi/Lfind_dynamic_proc_info.c",
+#    # This just includes Gget_accessors.c so we don't need to
+#    # compile both.
+#    "libunwind/src/mi/Lget_accessors.c",
+#    "libunwind/src/mi/Lget_fpreg.c",
+#    "libunwind/src/mi/Lget_proc_info_by_ip.c",
+#    "libunwind/src/mi/Lget_proc_name.c",
+#    "libunwind/src/mi/Lget_reg.c",
+#    "libunwind/src/mi/Lput_dynamic_unwind_info.c",
+#    "libunwind/src/mi/Lset_caching_policy.c",
+#    "libunwind/src/mi/Lset_fpreg.c",
+#    "libunwind/src/mi/Lset_reg.c",
+#    "libunwind/src/mi/mempool.c",
+#    "libunwind/src/mi/strerror.c",
+#    "libunwind/src/os-linux.c",
+#    "libunwind/src/x86_64/Gcreate_addr_space.c",
+#    "libunwind/src/x86_64/getcontext.S",
+#    "libunwind/src/x86_64/Gget_proc_info.c",
+#    "libunwind/src/x86_64/Gget_save_loc.c",
+#    "libunwind/src/x86_64/Gglobal.c",
+#    "libunwind/src/x86_64/Ginit_local.c",
+#    "libunwind/src/x86_64/Ginit.c",
+#    "libunwind/src/x86_64/Ginit_remote.c",
+#    "libunwind/src/x86_64/Gos-linux.c",
+#    "libunwind/src/x86_64/Gregs.c",
+#    "libunwind/src/x86_64/Gresume.c",
+#    "libunwind/src/x86_64/Gstash_frame.c",
+#    "libunwind/src/x86_64/Gstep.c",
+#    "libunwind/src/x86_64/is_fpreg.c",
+#    "libunwind/src/x86_64/Lcreate_addr_space.c",
+#    "libunwind/src/x86_64/Lget_proc_info.c",
+#    "libunwind/src/x86_64/Lget_save_loc.c",
+#    "libunwind/src/x86_64/Lglobal.c",
+#    "libunwind/src/x86_64/Linit.c",
+#    "libunwind/src/x86_64/Linit_local.c",
+#    "libunwind/src/x86_64/Linit_remote.c",
+#    "libunwind/src/x86_64/Los-linux.c",
+#    "libunwind/src/x86_64/Lregs.c",
+#    "libunwind/src/x86_64/Lresume.c",
+#    "libunwind/src/x86_64/Lstash_frame.c",
+#    "libunwind/src/x86_64/Lstep.c",
+#    "libunwind/src/x86_64/Ltrace.c",
+#    "libunwind/src/x86_64/regname.c",
+#    "libunwind/src/x86_64/setcontext.S",
+#  ],
+#  hdrs = [
+#    "libunwind/src/os-linux.h",
+#    "libunwind/src/elf64.h",
+#    "libunwind/src/x86_64/init.h",
+#    "libunwind/src/x86_64/ucontext_i.h",
+#    "libunwind/src/x86_64/unwind_i.h",
+#    "build/include/libunwind.h",
+#    "build/include/libunwind-common.h",
+#  ],
+#  copts = [
+#    "-Wno-error",
+#    '-DHAVE_CONFIG_H',
+#    '-D_GNU_SOURCE',
+#    '-DNDEBUG',
+#    "-Ithird_party/libunwind/build/include/private",
+#    "-Ithird_party/libunwind/libunwind/include",
+#    "-Ithird_party/libunwind/libunwind/include/tdep-x86_64",
+#    "-Ithird_party/libunwind/libunwind/src",
+#    "-Ithird_party/libunwind/libunwind/src/dwarf",
+#    "-Ithird_party/libunwind/libunwind/src/x86_64",
+#  ]
+#)
+
+cc_library(
+  name = "libunwind",
+  visibility = ["//visibility:public"],
+  srcs = [
+    "lib/libunwind.a",
+    "lib/libunwind.so",
+  ],
+  hdrs = [
+    "include/libunwind.h",
+    "include/libunwind-common.h",
+    "include/libunwind-dynamic.h",
+    "include/unwind.h",
+  ],
+)
+
+cc_library(
+  name = "libunwind-coredump",
+  visibility = ["//visibility:public"],
+  srcs = [
+    "lib/libunwind-coredump.a",
+    "lib/libunwind-coredump.so",
+  ],
+  hdrs = [
+    "include/libunwind-coredump.h",
+    "include/libunwind-dynamic.h",
+  ],
+)
+
+cc_library(
+  name = "libunwind-generic",
+  visibility = ["//visibility:public"],
+  srcs = [
+    "lib/libunwind-generic.a",
+    "lib/libunwind-generic.so",
+  ],
+  hdrs = [
+    "include/libunwind.h",
+    "include/libunwind-dynamic.h",
+  ],
+)
+
+cc_library(
+  name = "libunwind-ptrace",
+  visibility = ["//visibility:public"],
+  srcs = [
+    "lib/libunwind-ptrace.a",
+    "lib/libunwind-ptrace.so",
+  ],
+  hdrs = [
+    "include/libunwind-ptrace.h",
+    "include/libunwind-dynamic.h",
+  ],
+)
+
+cc_library(
+  name = "libunwind-setjmp",
+  visibility = ["//visibility:public"],
+  srcs = [
+    "lib/libunwind-setjmp.a",
+    "lib/libunwind-setjmp.so",
+  ],
+  hdrs = [
+    "include/libunwind.h",
+    "include/libunwind-dynamic.h",
+  ],
+)
+
+cc_library(
+  name = "libunwind-x86_64",
+  visibility = ["//visibility:public"],
+  srcs = [
+    "lib/libunwind-x86_64.a",
+    "lib/libunwind-x86_64.so",
+  ],
+  hdrs = [
+    "include/libunwind-x86_64.h",
+    "include/libunwind-dynamic.h",
+  ],
+)
